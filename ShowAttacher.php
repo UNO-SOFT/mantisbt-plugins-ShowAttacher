@@ -36,7 +36,7 @@ class ShowAttacherPlugin extends MantisPlugin {
 	}
 
 	function view_bug_attachment($p_event, $p_attachment) {
-		log_event( LOG_EMAIL_RECIPIENT, "event=$p_event params=".var_export($p_attachment, true) );
+		//log_event( LOG_EMAIL_RECIPIENT, "event=$p_event params=".var_export($p_attachment, true) );
 		require_once( MANTIS_CORE . '/database_api.php' );
 		require_once( MANTIS_CORE . '/user_api.php' );
 		$t_query = 'SELECT user_id
@@ -44,7 +44,7 @@ class ShowAttacherPlugin extends MantisPlugin {
 		                WHERE id=' . db_param();
 		$t_db_result = db_query( $t_query, array( $p_attachment['id'] ), 1 );
 		$t_name =  user_get_name( db_result( $t_db_result ) );
-		echo '<pre>' . $t_name . '</pre>';
+		echo ' <span class="underline">@' . $t_name . '</span>';
 		return $t_name;
 	}
 
