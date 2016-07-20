@@ -44,8 +44,7 @@ class ShowAttacherPlugin extends MantisPlugin {
 		                WHERE id=' . db_param();
 		$t_db_result = db_query( $t_query, array( $p_attachment['id'] ), 1 );
 		$t_name =  user_get_name( db_result( $t_db_result ) );
-		echo ' <span class="underline">@' . $t_name . '</span>';
-		return $t_name;
+		return ' <span class="underline">@' . $t_name . '</span>\n';
 	}
 
 }
